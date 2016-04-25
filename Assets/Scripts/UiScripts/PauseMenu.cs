@@ -120,6 +120,7 @@ public class PauseMenu : MonoBehaviour {
 
     public void OnGUI() {
         if (isPaused) {
+            GUI.depth = 10;
             GUI.color = new Vector4(0,0,0,0.75f);
             GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), shade);
             GUI.DrawTexture(new Rect(20, 20, Screen.width - 40, Screen.height - 40), image_frame);

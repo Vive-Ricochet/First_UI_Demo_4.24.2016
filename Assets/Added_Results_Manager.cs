@@ -14,9 +14,9 @@ public class Added_Results_Manager : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-        BoF = BoF.GetComponent<Text>();
-        BoS = BoS.GetComponent<Text>();
-        Hoard = Hoard.GetComponent <Text>();
+        //BoF = BoF.GetComponent<Text>();
+        //BoS = BoS.GetComponent<Text>();
+       // Hoard = Hoard.GetComponent <Text>();
     }
 	
 	

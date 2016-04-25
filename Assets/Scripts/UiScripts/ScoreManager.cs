@@ -73,4 +73,12 @@ public class ScoreManager : MonoBehaviour {
             GUI.DrawTexture(new Rect(90, Screen.height - 80, 30, 50), image_blueScore[scoreP2]);
         }
     }
+
+    public int getScoreP1() {
+        return scoreP1;
+    }
+
+    public int getScoreP2() {
+        return scoreP2;
+    }
 }
