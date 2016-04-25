@@ -136,10 +136,26 @@ public class PauseMenu : MonoBehaviour {
     public void RestartMatch(){
         ScoreManager.scoreP1 = 0;
         ScoreManager.scoreP2 = 0;
+        Added_Results_Manager.TotalParry = Parry.BoSP1 + Parry.BoSP2;
+        Added_Results_Manager.TotalThrows = ProjectileMaker.BoFP1 + ProjectileMaker.BoFP2;
+        Added_Results_Manager.TotalPickup = ProjectileMaker.HoardP1 + ProjectileMaker.HoardP2;
+        ProjectileMaker.BoFP1 = 0;
+        ProjectileMaker.BoFP2 = 0;
+        ProjectileMaker.HoardP1 = 0;
+        ProjectileMaker.HoardP2 = 0;
+        Parry.BoSP1 = 0;
+        Parry.BoSP2 = 0;
         SceneManager.LoadScene(2);
     }
 
     public void gotoMainMenu(){
+        Added_Results_Manager.TotalParry = Parry.BoSP1 + Parry.BoSP2;
+        Added_Results_Manager.TotalThrows = ProjectileMaker.BoFP1 + ProjectileMaker.BoFP2;
+        Added_Results_Manager.TotalPickup = ProjectileMaker.HoardP1 + ProjectileMaker.HoardP2;
+        ProjectileMaker.BoFP1 = 0;
+        ProjectileMaker.BoFP2 = 0;
+        ProjectileMaker.HoardP1 = 0;
+        ProjectileMaker.HoardP2 = 0;
         ScoreManager.scoreP1 = 0;
         ScoreManager.scoreP2 = 0;
         SceneManager.LoadScene(1);

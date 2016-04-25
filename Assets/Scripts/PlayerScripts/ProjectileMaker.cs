@@ -7,7 +7,14 @@ public class  ProjectileMaker : MonoBehaviour {
     private InputManager input;
     private int player_num;
 
+    public static int BoFP1;
+    public static int BoFP2;
+    public static int HoardP1;
+    public static int HoardP2;
+
+
     public GameObject currentProjectile = null;
+    public GameObject player;
 
     private float gravity = 50;
     private bool canPickUp = false;
@@ -20,6 +27,11 @@ public class  ProjectileMaker : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
+        print("Player 1 Balls of Fury" + BoFP1);
+        print("Player 2 Balls of Fury" + BoFP2);
+        print("Player 1 Hoard" + HoardP1);
+        print("Player 2 Hoard" + HoardP2);
 
         input = GameObject.Find("InputManager").GetComponent<InputManager>();
         player_num = GetComponent<PlayerMovement>().player_num;
@@ -86,6 +98,11 @@ public class  ProjectileMaker : MonoBehaviour {
 
     // Append an item to the current projectile
     public void appendItem(Collider other) {
+        if (player.name.Equals("human1"))
+            HoardP1 += 1;
+        if (player.name.Equals("human2")) {
+            HoardP2 += 1;
+        }
 
         if (currentProjectile == null) {
             currentProjectile = buildNewProjectile();
@@ -114,8 +131,14 @@ public class  ProjectileMaker : MonoBehaviour {
             throwing = true;
             animator.SetBool("Throwing", throwing);
 
-            // getting initial projectile references
-            Vector3 projectilePosition = currentProjectile.transform.position;
+            if (player.name.Equals("human1")) {
+                BoFP1 += 1;
+            }
+            if (player.name.Equals("human2")) {
+                BoFP2 += 1;
+            }
+                // getting initial projectile references
+                Vector3 projectilePosition = currentProjectile.transform.position;
             projectilePosition.y -= -currentProjectile.GetComponent<ProjectileProperties>().getRadius();
             Vector3 heading = otherPlayer.transform.position - currentProjectile.transform.position; // the vector between this player and target
 

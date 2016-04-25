@@ -80,10 +80,22 @@ public class ResultsScreenMenuManager : MonoBehaviour {
     void gotoVersus() {
         ScoreManager.scoreP1 = 0;
         ScoreManager.scoreP2 = 0;
+        ProjectileMaker.BoFP1 = 0;
+        ProjectileMaker.BoFP2 = 0;
+        ProjectileMaker.HoardP1 = 0;
+        ProjectileMaker.HoardP2 = 0;
+        Parry.BoSP1 = 0;
+        Parry.BoSP2 = 0;
         SceneManager.LoadScene(2);
     }
 
     void gotoMainMenu() {
+        ProjectileMaker.BoFP1 = 0;
+        ProjectileMaker.BoFP2 = 0;
+        ProjectileMaker.HoardP1 = 0;
+        ProjectileMaker.HoardP2 = 0;
+        Parry.BoSP1 = 0;
+        Parry.BoSP2 = 0;
         ScoreManager.scoreP1 = 0;
         ScoreManager.scoreP2 = 0;
         SceneManager.LoadScene(1);
