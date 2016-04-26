@@ -19,9 +19,14 @@ public class  ProjectileMaker : MonoBehaviour {
     private float gravity = 50;
     private bool canPickUp = false;
     private bool isThrowing = false;
-    private float throwSpeed = 100;
+    private float throwSpeed = 25;
+    private float throwSpeedMax = 150;
+    //private int throwTimer = 200;
+    private float rotationSpeed = 0.5f;
+    private float rotationSpeedMax = 50;
     Animator animator;
     bool throwing = false;
+    public bool canSpin = true;
 
     private string projectileName = "Projectile Object";
 
@@ -45,14 +50,15 @@ public class  ProjectileMaker : MonoBehaviour {
 
         canPickUp = input.button(player_num, "X");
 
-        if (input.rightTrigger(player_num) >= 0.2) {
-            isThrowing = true;
+        if (canSpin && input.rightTrigger(player_num) >= 0.2) {
             spinBall();
         }
 
+        if (!canSpin && input.rightTrigger(player_num) >= 0.2) {
+            canSpin = true;
+        }
+
         if (isThrowing && input.rightTrigger(player_num) < 0.2f) {
-            throwing = false;
-            isThrowing = false;
             throwBall();
         }
 
@@ -120,13 +126,26 @@ public class  ProjectileMaker : MonoBehaviour {
 
     // Spin a ball for some reason
     void spinBall() {
+        isThrowing = true;
         if (currentProjectile != null) {
-            currentProjectile.transform.Rotate(Vector3.right * 15);
+            //throwTimer -= 1;
+            currentProjectile.transform.Rotate(Vector3.right * rotationSpeed);
+            if (rotationSpeed < rotationSpeedMax) 
+                rotationSpeed += 0.25f;
+            if (throwSpeed < throwSpeedMax)
+                throwSpeed = throwSpeed * 1.01f;
+            //if (throwTimer <= 0) {
+            //    throwTimer = 200;
+            //    throwBall();
+            //}
         }
     }
 
     // Throw a ball
-    void throwBall() {
+ /*   void throwBall() {
+        rotationSpeed = 1;
+        isThrowing = false;
+        throwing = false;
         if (currentProjectile != null) {
             throwing = true;
             animator.SetBool("Throwing", throwing);
@@ -161,5 +180,51 @@ public class  ProjectileMaker : MonoBehaviour {
 
 
         }
+        throwSpeed = 25;
+    }
+  */
+
+    void throwBall() {
+        rotationSpeed = 1;
+        isThrowing = false;
+        throwing = false;
+        if (currentProjectile != null) {
+            throwing = true;
+            animator.SetBool("Throwing", throwing);
+
+            // getting initial projectile references
+            Vector3 projectilePosition = currentProjectile.transform.position;
+            projectilePosition.y -= -currentProjectile.GetComponent<ProjectileProperties>().getRadius();
+            Vector3 heading = otherPlayer.transform.position - currentProjectile.transform.position + new Vector3(0, 5, 0); // the vector between this player and target
+
+            // projectile property calculations
+            float distance = new Vector2(heading.x, heading.z).magnitude; // the horizontal distance between this player and target
+            float deltaHeight = currentProjectile.transform.position.y - otherPlayer.transform.position.y - 10f; // projectile's relative transform height
+            float upwardsMagnitude = ((-deltaHeight * throwSpeed) / distance) - ((gravity * distance) / (2 * throwSpeed)); // projectile "y" velocity component
+
+            // reset projectile's inherited values
+            currentProjectile.transform.parent = null;
+            currentProjectile.GetComponent<Rigidbody>().isKinematic = false;
+            currentProjectile.GetComponent<Rigidbody>().detectCollisions = true;
+            currentProjectile.GetComponent<SphereCollider>().isTrigger = false;
+
+            // apply new velocity
+            Vector3 newVelocity = heading.normalized * throwSpeed;
+            currentProjectile.GetComponent<Rigidbody>().velocity = newVelocity;
+            currentProjectile.GetComponent<ProjectileProperties>().inMotion = true;
+            currentProjectile = null;
+
+
+        }
+        throwSpeed = 25;
+    }
+
+    public void cancelSpin() {
+
+        canSpin = false;
+        rotationSpeed = 1;
+        throwSpeed = 25;
+        isThrowing = false;
+        throwing = false;
     }
 }
