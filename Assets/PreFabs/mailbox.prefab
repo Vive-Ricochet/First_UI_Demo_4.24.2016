@@ -95,6 +95,7 @@ GameObject:
   - 65: {fileID: 6517722}
   - 65: {fileID: 6584764}
   - 114: {fileID: 11478584}
+  - 122: {fileID: 12228760}
   m_Layer: 0
   m_Name: mailbox
   m_TagString: Pickup
@@ -453,13 +454,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39cf7ef322856ec47a49fc24d64ca853, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!122 &12228760
+Halo:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 150648}
+  m_Enabled: 1
+  m_Color:
+    serializedVersion: 2
+    rgba: 4286611584
+  m_Size: 3
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_Size
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 150648}

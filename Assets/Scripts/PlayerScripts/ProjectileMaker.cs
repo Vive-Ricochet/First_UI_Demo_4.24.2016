@@ -22,7 +22,7 @@ public class  ProjectileMaker : MonoBehaviour {
     private float throwSpeed = 25;
     private float throwSpeedMax = 150;
     //private int throwTimer = 200;
-    private float rotationSpeed = 0.5f;
+    private float rotationSpeed = 1.5f;
     private float rotationSpeedMax = 50;
     Animator animator;
     bool throwing = false;
@@ -131,9 +131,9 @@ public class  ProjectileMaker : MonoBehaviour {
             //throwTimer -= 1;
             currentProjectile.transform.Rotate(Vector3.right * rotationSpeed);
             if (rotationSpeed < rotationSpeedMax) 
-                rotationSpeed += 0.25f;
+                rotationSpeed += 1f;
             if (throwSpeed < throwSpeedMax)
-                throwSpeed = throwSpeed * 1.01f;
+                throwSpeed = throwSpeed * 1.05f;
             //if (throwTimer <= 0) {
             //    throwTimer = 200;
             //    throwBall();
@@ -191,6 +191,12 @@ public class  ProjectileMaker : MonoBehaviour {
         if (currentProjectile != null) {
             throwing = true;
             animator.SetBool("Throwing", throwing);
+            if (player.name.Equals("human1")) {
+                BoFP1 += 1;
+            }
+            if (player.name.Equals("human2")) {
+                BoFP2 += 1;
+            }
 
             // getting initial projectile references
             Vector3 projectilePosition = currentProjectile.transform.position;
@@ -222,7 +228,7 @@ public class  ProjectileMaker : MonoBehaviour {
     public void cancelSpin() {
 
         canSpin = false;
-        rotationSpeed = 1;
+        rotationSpeed = 1.5f;
         throwSpeed = 25;
         isThrowing = false;
         throwing = false;

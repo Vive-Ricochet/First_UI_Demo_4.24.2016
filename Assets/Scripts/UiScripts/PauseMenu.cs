@@ -22,6 +22,9 @@ public class PauseMenu : MonoBehaviour {
     public Texture2D[] button_restart = new Texture2D[3];
     public Texture2D[] button_mainmenu = new Texture2D[3];
 
+    private bool currentlypaused = false;
+    private float TimeSpeed;
+
     void Start(){
 
         // instantiate input manager
@@ -43,6 +46,9 @@ public class PauseMenu : MonoBehaviour {
     void Update(){
 
         if (isPaused) {
+            if(currentlypaused == false) {
+                TimeSpeed = Time.timeScale;
+            }
             Time.timeScale = 0f;
 
             //======= Navigate the menus via left control stick =======//
@@ -72,6 +78,8 @@ public class PauseMenu : MonoBehaviour {
 
                 switch(menuState) {
                     case 0 :
+                        Time.timeScale = TimeSpeed;
+                        currentlypaused = false;
                         TogglePause();
                         break;
                     case 1 :
@@ -90,13 +98,14 @@ public class PauseMenu : MonoBehaviour {
             if (input.buttonDown(1, "B") || input.buttonDown(2, "A") ||
                 input.buttonDown(3, "B") || input.buttonDown(4, "B")) {
 
+                Time.timeScale = TimeSpeed;
+                currentlypaused = false;
                 TogglePause();
             }
 
 
-        } else {
-            Time.timeScale = 1f;
-        }
+        } 
+        
 
         if (input.buttonDown(1, "Start") || input.buttonDown(2, "Start") ||
             input.buttonDown(3, "Start") || input.buttonDown(4, "Start")) {

@@ -5,16 +5,16 @@ public class CollisionManager : MonoBehaviour {
 
     public bool hit = false;
     int timer;
+    public GameObject HitEffect;
 
     void FixedUpdate()
     {
         timer -= 1;
-        if (timer == 0) {
+        if (timer == 0)
+        {
             hit = true;
         }
-    }	
-    
-    // Check if player has been hit by a moving projectile
+    }	// Check if player has been hit by a moving projectile
     void OnCollisionEnter(Collision other) {
 
         // The agent is a projectile
@@ -82,6 +82,11 @@ public class CollisionManager : MonoBehaviour {
 
         CameraController CC = GameObject.Find("P1Cam").GetComponent<CameraController>();
         CC.onCollision(gameObject.transform);
+
+        Vector3 particalPosition = transform.position;
+        particalPosition.y += 5;
+
+        Instantiate(HitEffect, particalPosition, transform.rotation);
 
     }
 }

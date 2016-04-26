@@ -88,9 +88,9 @@ public class MainMenuManager : MonoBehaviour {
         GUI.DrawTexture(new Rect(20, 20, Screen.width - 40, Screen.height - 40), image_frame);
 
         GUI.DrawTexture(new Rect(Screen.width/4 - 100, Screen.height/4 - 20, 270, 140), button_versus[(menuState == 0 ? 1 : 0)]);
-        GUI.DrawTexture(new Rect(Screen.width / 4 , Screen.height / 4 + 140, 260, 140), button_exit[(menuState == 1 ? 2 : 0)]);
-		GUI.DrawTexture(new Rect(Screen.width/ 4 - 100, Screen.height / 4 + 300, 270, 140), button_stats[(menuState == 2 ? 1 : 3)]);
-		GUI.DrawTexture(new Rect(Screen.width / 4, Screen.height / 4 + 460, 260, 140), button_resetStats[(menuState == 3 ? 0 : 2)]);
+        GUI.DrawTexture(new Rect(Screen.width / 4 , Screen.height / 4 + 140, 260, 140), button_exit[(menuState == 1 ? 1 : 0)]);
+		GUI.DrawTexture(new Rect(Screen.width/ 4 - 100, Screen.height / 4 + 300, 270, 140), button_stats[(menuState == 2 ? 1 : 0)]);
+		GUI.DrawTexture(new Rect(Screen.width / 4, Screen.height / 4 + 460, 260, 140), button_resetStats[(menuState == 3 ? 1 : 0)]);
     }
 
     void gotoVersus() {
