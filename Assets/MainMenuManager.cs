@@ -9,12 +9,17 @@ public class MainMenuManager : MonoBehaviour {
 
     public Texture2D[] button_versus = new Texture2D[3];
     public Texture2D[] button_exit = new Texture2D[3];
+	public Texture2D[] button_stats = new Texture2D[3];
+	public Texture2D[] button_resetStats = new Texture2D[3];
+
+	public GameObject statusScreen;
 
     public int menuState = 0;
 
     private InputManager input;
     private bool canNavigate = true;
-    private int menuSize = 1;
+	private bool isShowing = false;
+    private int menuSize = 3;
 
 	// Use this for initialization
 	void Start () {
@@ -27,7 +32,10 @@ public class MainMenuManager : MonoBehaviour {
         button_versus[1] = Resources.Load("Menu/button_versus01", typeof(Texture2D)) as Texture2D;
         button_exit[0] = Resources.Load("Menu/button_exit00", typeof(Texture2D)) as Texture2D;
         button_exit[1] = Resources.Load("Menu/button_exit01", typeof(Texture2D)) as Texture2D;
-
+		button_stats [0] = Resources.Load ("Menu/stats_button00", typeof(Texture2D)) as Texture2D;
+		button_stats [1] = Resources.Load ("Menu/stats_button01", typeof(Texture2D)) as Texture2D;
+		button_resetStats [0] = Resources.Load ("Menu/reset_button00", typeof(Texture2D)) as Texture2D;
+		button_resetStats [1] = Resources.Load ("Menu/reset_button01", typeof(Texture2D)) as Texture2D;
 	}
 	
 	// Update is called once per frame
@@ -63,6 +71,13 @@ public class MainMenuManager : MonoBehaviour {
                 case 1:
                     gotoTitleScreen();
                     break;
+				case 2:
+					isShowing = !isShowing;
+					displayStats ();
+					break;
+				case 3:
+					gotoResetStats ();
+					break;
             }
 
         }
@@ -73,7 +88,9 @@ public class MainMenuManager : MonoBehaviour {
         GUI.DrawTexture(new Rect(20, 20, Screen.width - 40, Screen.height - 40), image_frame);
 
         GUI.DrawTexture(new Rect(Screen.width/4 - 100, Screen.height/4 - 20, 270, 140), button_versus[(menuState == 0 ? 1 : 0)]);
-        GUI.DrawTexture(new Rect(Screen.width / 4 , Screen.height / 4 + 140, 260, 140), button_exit[(menuState == 1 ? 1 : 0)]);
+        GUI.DrawTexture(new Rect(Screen.width / 4 , Screen.height / 4 + 140, 260, 140), button_exit[(menuState == 1 ? 2 : 0)]);
+		GUI.DrawTexture(new Rect(Screen.width/ 4 - 100, Screen.height / 4 + 300, 270, 140), button_stats[(menuState == 2 ? 1 : 3)]);
+		GUI.DrawTexture(new Rect(Screen.width / 4, Screen.height / 4 + 460, 260, 140), button_resetStats[(menuState == 3 ? 0 : 2)]);
     }
 
     void gotoVersus() {
@@ -83,4 +100,12 @@ public class MainMenuManager : MonoBehaviour {
     void gotoTitleScreen() {
         SceneManager.LoadScene(0);
     }
+	void displayStats(){
+		statusScreen.SetActive (isShowing);
+	}
+	void gotoResetStats(){
+		Added_Results_Manager.TotalThrows = 0;
+		Added_Results_Manager.TotalPickup = 0;
+		Added_Results_Manager.TotalParry = 0;
+	}
 }
