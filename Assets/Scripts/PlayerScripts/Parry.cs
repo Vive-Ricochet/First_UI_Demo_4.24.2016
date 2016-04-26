@@ -44,6 +44,7 @@ public class Parry : MonoBehaviour
             startFrame = Time.frameCount;
             GetComponent<PlayerMovement>().canMove = false;
             button_down = true;
+            GetComponent<ProjectileMaker>().cancelSpin();
 
         }
 

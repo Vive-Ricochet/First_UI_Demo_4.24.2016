@@ -34,6 +34,7 @@ ModelImporter:
     100052: southwest_geo
     100054: statue_base
     100056: travel
+    100058: north_geo_001
     400000: bike_rack_one
     400002: bike_rack_two
     400004: casino
@@ -63,6 +64,7 @@ ModelImporter:
     400052: southwest_geo
     400054: statue_base
     400056: travel
+    400058: north_geo_001
     2300000: bike_rack_one
     2300002: bike_rack_two
     2300004: casino
@@ -91,6 +93,7 @@ ModelImporter:
     2300050: southwest_geo
     2300052: statue_base
     2300054: travel
+    2300056: north_geo_001
     3300000: bike_rack_one
     3300002: bike_rack_two
     3300004: casino
@@ -119,6 +122,7 @@ ModelImporter:
     3300050: southwest_geo
     3300052: statue_base
     3300054: travel
+    3300056: north_geo_001
     4300000: travel
     4300002: gym
     4300004: loans
@@ -147,6 +151,7 @@ ModelImporter:
     4300050: southwest_coll_geo
     4300052: grass_curb_coll_geo
     4300054: north_curb_coll_geo
+    4300056: north_geo_001
     7400000: Default Take
     9500000: //RootNode
   materials:
