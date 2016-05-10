@@ -154,6 +154,10 @@ public class PauseMenu : MonoBehaviour {
         ProjectileMaker.HoardP2 = 0;
         Parry.BoSP1 = 0;
         Parry.BoSP2 = 0;
+        PlayerMovement.player1_travel = 0;
+        PlayerMovement.player2_travel = 0;
+        CowardScript.coward_player1 = 0;
+        CowardScript.coward_player2 = 0;
         SceneManager.LoadScene(2);
     }
 
@@ -167,6 +171,10 @@ public class PauseMenu : MonoBehaviour {
         ProjectileMaker.HoardP2 = 0;
         ScoreManager.scoreP1 = 0;
         ScoreManager.scoreP2 = 0;
+        PlayerMovement.player1_travel = 0;
+        PlayerMovement.player2_travel = 0;
+        CowardScript.coward_player1 = 0;
+        CowardScript.coward_player2 = 0;
         SceneManager.LoadScene(1);
     }
 }

@@ -7,12 +7,14 @@ public class StatsScript : MonoBehaviour {
     public Text Thrown;
     public Text PickedUp;
     public Text Parry;
+    public Text Traveled;
 
 	// Use this for initialization
 	void Start () {
         Thrown = Thrown.GetComponent<Text>();
         PickedUp = PickedUp.GetComponent<Text>();
         Parry = Parry.GetComponent<Text>();
+        Traveled = Traveled.GetComponent<Text>();
 	}
 	
 	// Update is called once per frame
@@ -20,5 +22,6 @@ public class StatsScript : MonoBehaviour {
         Thrown.text = "Total Throws = " + Added_Results_Manager.TotalThrows;
         PickedUp.text = "Total Items picked up = " + Added_Results_Manager.TotalPickup;
         Parry.text = "Total number of Parries = " + Added_Results_Manager.TotalParry;
+        Traveled.text = "Total Distance Traveled = " + Added_Results_Manager.TotalTraveled + " units";
 	}
 }

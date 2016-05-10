@@ -107,5 +107,6 @@ public class MainMenuManager : MonoBehaviour {
 		Added_Results_Manager.TotalThrows = 0;
 		Added_Results_Manager.TotalPickup = 0;
 		Added_Results_Manager.TotalParry = 0;
+        Added_Results_Manager.TotalTraveled = 0;
 	}
 }

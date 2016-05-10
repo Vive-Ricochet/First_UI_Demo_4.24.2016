@@ -147,9 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a179464e457f4c749bc8833186baf58b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameObjs:
-  - {fileID: 150648, guid: 5d3e1dc04ee01a049a9618407f3870ee, type: 2}
-  - {fileID: 132880, guid: d50abe55f10f8bb4e9fe801cc014d312, type: 2}
+  GameObjs: []
   SpawnTimer: 500
 --- !u!1001 &16901691
 Prefab:
@@ -666,6 +664,7 @@ MonoBehaviour:
   PlayerCamera: {fileID: 1866294075}
   input: {fileID: 0}
   player_num: 1
+  player: {fileID: 355204707}
   dashing: 0
   canMove: 1
 --- !u!65 &355204713
@@ -781,7 +780,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!4 &355204717 stripped
+--- !u!114 &355204717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 355204707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a33074491b560443a342694efc8b91b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  other_player: {fileID: 1469203869}
+  player: {fileID: 355204707}
+--- !u!4 &355204719 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400026, guid: 914977e260d4cb0409b970f664d81f90, type: 3}
   m_PrefabInternal: {fileID: 1561605985}
@@ -1092,14 +1104,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 914015323}
-  player1: {fileID: 355204717}
-  player2: {fileID: 1469203879}
-  minDistance: 60
-  distanceBias: 0.1
+  player1: {fileID: 355204719}
+  player2: {fileID: 1469203881}
+  minDistance: 15
+  distanceBias: 0.75
   collided: 0
-  duration: 0.0005
-  speed: 2
-  magnitude: 0.5
+  duration: 0.5
+  speed: 1
+  magnitude: 0.3
   test: 0
 --- !u!82 &649481776
 AudioSource:
@@ -1334,8 +1346,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2df147438806fa4b99e364e7d047fd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target1: {fileID: 355204717}
-  target2: {fileID: 1469203879}
+  target1: {fileID: 355204719}
+  target2: {fileID: 1469203881}
 --- !u!1001 &922663946
 Prefab:
   m_ObjectHideFlags: 0
@@ -1583,9 +1595,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a179464e457f4c749bc8833186baf58b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameObjs:
-  - {fileID: 130292, guid: 17d7e5ea0145e034b91e34dd4fa3e443, type: 2}
-  - {fileID: 150648, guid: 5d3e1dc04ee01a049a9618407f3870ee, type: 2}
+  GameObjs: []
   SpawnTimer: 500
 --- !u!1001 &1116838937
 Prefab:
@@ -1854,6 +1864,10 @@ Prefab:
       propertyPath: HitEffect
       value: 
       objectReference: {fileID: 132948, guid: 04204ca1f4176a444b2e1276ef1580c2, type: 2}
+    - target: {fileID: 11483152, guid: 9a40a176d4f18bc449e58e7d67b7fd0b, type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1469203869}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9a40a176d4f18bc449e58e7d67b7fd0b, type: 2}
   m_IsPrefabParent: 0
@@ -2155,13 +2169,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!114 &1469203874 stripped
+--- !u!114 &1469203871
 MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11439312, guid: 9a40a176d4f18bc449e58e7d67b7fd0b,
-    type: 2}
-  m_PrefabInternal: {fileID: 1165231127}
-  m_Script: {fileID: 11500000, guid: 6588e8c2f907d5347ab5fbfbeb72a7cb, type: 3}
---- !u!4 &1469203879 stripped
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1469203869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a33074491b560443a342694efc8b91b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  other_player: {fileID: 355204707}
+  player: {fileID: 1469203869}
+--- !u!4 &1469203881 stripped
 Transform:
   m_PrefabParentObject: {fileID: 454950, guid: 9a40a176d4f18bc449e58e7d67b7fd0b, type: 2}
   m_PrefabInternal: {fileID: 1165231127}
@@ -2355,9 +2376,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a179464e457f4c749bc8833186baf58b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameObjs:
-  - {fileID: 131944, guid: c4fbc88eb5b280b45924140c04feeb73, type: 2}
-  - {fileID: 109188, guid: c0c4ea3ed8390cd4fadf00e863d8c4df, type: 2}
+  GameObjs: []
   SpawnTimer: 500
 --- !u!1001 &1654518781
 Prefab:
@@ -2421,9 +2440,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a179464e457f4c749bc8833186baf58b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameObjs:
-  - {fileID: 131944, guid: c4fbc88eb5b280b45924140c04feeb73, type: 2}
-  - {fileID: 132880, guid: d50abe55f10f8bb4e9fe801cc014d312, type: 2}
+  GameObjs: []
   SpawnTimer: 500
 --- !u!1001 &1694286535
 Prefab:
@@ -2546,9 +2563,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a179464e457f4c749bc8833186baf58b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameObjs:
-  - {fileID: 150648, guid: 5d3e1dc04ee01a049a9618407f3870ee, type: 2}
-  - {fileID: 109188, guid: c0c4ea3ed8390cd4fadf00e863d8c4df, type: 2}
+  GameObjs: []
   SpawnTimer: 500
 --- !u!1 &1879806565
 GameObject:
@@ -2617,8 +2632,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbf68ac93158f9f4b83a9c082ffc562f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  p1Hit: {fileID: 355204708}
-  p2Hit: {fileID: 1469203874}
+  p1Hit: {fileID: 0}
+  p2Hit: {fileID: 0}
   image_redUI: {fileID: 0}
   image_blueUI: {fileID: 0}
   image_redScore:
@@ -2705,9 +2720,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a179464e457f4c749bc8833186baf58b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameObjs:
-  - {fileID: 131944, guid: c4fbc88eb5b280b45924140c04feeb73, type: 2}
-  - {fileID: 130292, guid: 17d7e5ea0145e034b91e34dd4fa3e443, type: 2}
+  GameObjs: []
   SpawnTimer: 500
 --- !u!1001 &1926191674
 Prefab:
@@ -2771,9 +2784,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a179464e457f4c749bc8833186baf58b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameObjs:
-  - {fileID: 132880, guid: d50abe55f10f8bb4e9fe801cc014d312, type: 2}
-  - {fileID: 130292, guid: 17d7e5ea0145e034b91e34dd4fa3e443, type: 2}
+  GameObjs: []
   SpawnTimer: 500
 --- !u!1001 &1986187554
 Prefab:
